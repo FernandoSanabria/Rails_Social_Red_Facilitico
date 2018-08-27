@@ -3,7 +3,7 @@ class Users::OmniauthCallbacksController  <  ApplicationController
     
     def facebook
        
-       #raise request.env["omniauth.auth"].to_yaml
+       
         
         @user = User.from_omniauth(request.env["omniauth.auth"])
     
@@ -22,10 +22,10 @@ class Users::OmniauthCallbacksController  <  ApplicationController
     end
 
 
-    def incomplete_sign_up
+    def custom_sign_up
         @user = User.from_omniauth(session["devise.auth"])
-        #Strong params 
-        #@user.update(params[:user])
+        # Strong params 
+        # @user.update(params[:user])
        if  @user.update(user_params)        
         sign_in_and_redirect @user, event: :authentication    
        else 
@@ -36,12 +36,12 @@ class Users::OmniauthCallbacksController  <  ApplicationController
     
 
     def failure    
-      redirect_to new_user_session_path, notice: "No pudimos registrarte con facebook, por favor intenta de nuevo"
+      redirect_to new_user_session_path, notice: "No pudimos registrarte con facebook, por favor intenta de nuevo. Error: #{params[:error_description]}. Motivo: #{params[:error_reason]} "
     end    
 
 
 
-    #Strong params
+    # Strong params
     private 
         def user_params
 

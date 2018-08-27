@@ -25,9 +25,12 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+gem 'certified'
+
 gem 'haml-rails'
 gem 'devise', github: "plataformatec/devise"
 gem 'omniauth-facebook'
+gem 'flexbox_rb'
 #gem "rename"
 
 
